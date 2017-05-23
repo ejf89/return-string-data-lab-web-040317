@@ -14,3 +14,32 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready (function(){
+
+    $(".js-butt").on("click", function(event){
+        event.preventDefault()
+        var id = $(this).data("id")
+
+        $.get("/products/" + id + "/body", function(data){
+            $("#d"+id).text(data)
+        })
+
+        $.get("/products/" + id + "/inventory", function(data){
+            if (data === "true"){
+                $("#d"+id).append("Available")
+            } else {
+                $("#d"+id).append("Sold Out")
+            }
+        })
+
+    })
+
+console.log("yes")
+})
+
+// function addButtonListener(event){
+//     event.preventDefault()
+//     var buttons =
+//
+// }
